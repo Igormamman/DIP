@@ -1,0 +1,22 @@
+#syntax = docker/dockerfile:1.3
+FROM golang:1.17.2-alpine3.14 AS builder
+RUN apk --no-cache add build-base git
+WORKDIR /src
+COPY backend/go.* ./
+RUN go mod download
+
+COPY backend backend
+COPY Makefile Makefile
+RUN --mount=type=cache,target=/root/.cache/go-build make backend
+
+FROM alpine AS bin-linux
+COPY deploy/AppDebugConfig.ini /etc/AppConfig.ini
+RUN adduser -D app
+COPY --from=builder --chown=app /src/build/backend /bin/backend
+COPY /backend/utils /home/app/utils
+
+WORKDIR /home/app
+USER app
+RUN mkdir /home/app/logs
+CMD ["/bin/backend"]
+

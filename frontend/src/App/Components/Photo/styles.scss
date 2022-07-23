@@ -1,0 +1,104 @@
+div.item.content {
+  margin-bottom: 14px;
+  position: relative;
+}
+
+div.item.preview {
+  width: 220px;
+}
+
+div.item.delete {
+  width: 480px;
+}
+
+.photo-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+div.item img {
+  max-width: 100%;
+  width: auto;
+  vertical-align: bottom;
+}
+
+.item.content .buy-photo,
+.item.content .buy-photo-extra {
+  float: none;
+  width: 100%;
+  padding: 5px 0;
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.image-color {
+  display: inline-block;
+
+  img {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  &.loaded img {
+    opacity: 1;
+  }
+}
+
+.display-none {
+  @media only screen and (hover: none) and (pointer: coarse) {
+    display: inline;
+  }
+  display: none;
+}
+
+.display-button {
+  display: inline;
+}
+
+.photo-button {
+  border-style: solid;
+  border-width: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: normal;
+  line-height: normal;
+  margin: 0 0 1em 0;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  padding-top: 0.75rem;
+  padding-right: 1.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.75rem;
+  font-size: 14px;
+  font-family: "Karla", sans-serif;
+  background-color: #161616;
+  color: #ffffff;
+}
+
+.modalPreview {
+  max-width: 100px;
+  max-height: 75px;
+}
+
+.preview-opacity {
+  opacity: 0.45;
+  @media (min-width: 768px) {
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+button:hover,
+button:focus {
+  background-color: #7a7a7a;
+  color: #ffffff;
+}

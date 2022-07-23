@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+}
+
+body * {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  a {
+    color: #007ad9;
+    text-decoration: none;
+    :hover {
+      color: #116fbf;
+    }
+  }
+}
+
+#layout-topbar {
+  height: 56px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: #254c74;
+}
+
+.content-header {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  height: 56px;
+  font-family: Roboto;
+  font-size: 12px;
+  a {
+    color: #fff;
+  }
+}
+
+.justify-content-end {
+  justify-content: flex-end !important;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+.white-space-nowrap {
+  white-space: nowrap !important;
+}
+
+.text-overflow-ellipsis {
+  text-overflow: ellipsis !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.col-4 {
+  padding: 0.5rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.inputgroup-addon {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.bold {
+  font-family: Righteous;
+}
+
+.logo {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #fff;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.end {
+  font-family: Roboto;
+  &.after {
+    background-color: #f76a43;
+    border-radius: 2px;
+    font-family: Roboto;
+    padding: 0 3px;
+    margin-left: 5px;
+  }
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.text-overflow-ellipsis {
+  text-overflow: ellipsis !important;
+}
+
+.align-content-center {
+  align-content: center !important;
+}
+
+.col-2 {
+  flex: 0 0 auto;
+  padding: 0.5rem;
+  width: 16.6667%;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.avatar {
+  position: relative;
+  width: 25px;
+  margin-right: 5px;
+}
+
+.cart {
+  display: grid;
+  align-items: center;
+  justify-content: end;
+}
+
+.pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.dropdown-item {
+  color: #1e2125 !important;
+}
+
+.icon {
+  vertical-align: middle;
+  font-size: 18px;
+}

@@ -1,0 +1,19 @@
+FROM node AS builder
+ARG NODE_OPTIONS=--openssl-legacy-provider
+COPY frontend frontend
+COPY Makefile Makefile
+RUN make frontend
+
+FROM golang:1.17.2-alpine3.14 AS serv_builder
+WORKDIR /src
+COPY frontend/server server
+RUN go build -o frontServer server/main.go
+
+FROM alpine
+RUN adduser -D app
+COPY --from=builder /build/frontend /home/app/webapp
+COPY --from=serv_builder /src/frontServer /bin/frontServer
+USER app
+WORKDIR /home/app
+CMD ["/bin/frontServer"]
+

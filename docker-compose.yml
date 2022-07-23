@@ -1,0 +1,74 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    restart: always
+    ports:
+        - 3000:8080
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    restart: always
+    ports:
+      - 4000:4000
+    volumes:
+      - log_volume:/home/app/logs
+    links:
+      - "db:photoservice_db"
+
+  userService:
+    build:
+      context: .
+      dockerfile: Dockerfile.userService
+    image: userservice
+    restart: always
+    ports:
+      - 4005:4005
+    volumes:
+      - log_volume:/home/app/logs
+    links:
+      - "db:photoservice_db"
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: pgdebugpassword
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - pgdata_volume:/var/lib/postgresql/data
+
+  minio:
+    build:
+      context: .
+      dockerfile: Dockerfile.minio
+    restart: always
+    volumes:
+      - log_volume:/home/app/logs
+    ports:
+      - 4004:4004
+
+  admin:
+    build:
+      context: .
+      dockerfile: Dockerfile.admin
+    restart: always
+    volumes:
+      - log_volume:/home/app/logs
+    ports:
+      - 4001:4001
+    links:
+      - "db:photoservice_db"
+
+
+
+volumes:
+  pgdata_volume:
+  log_volume:
